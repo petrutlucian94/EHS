@@ -141,16 +141,16 @@ void EHSServer::ClearIdleConnections()
     for (EHSConnectionList::iterator i = m_oEHSConnectionList.begin();
             i != m_oEHSConnectionList.end(); ++i) {
 
-        MutexHelper mh(&(*i)->m_oMutex);
+        // MutexHelper mh(&(*i)->m_oMutex);
         // if it's been more than N seconds since a response has been
         //   sent and there are no pending requests
         if ((*i)->StillReading() &&
                 time(NULL) - (*i)->LastActivity() > m_nIdleTimeout &&
                 (!(*i)->RequestsPending())) {
             EHS_TRACE("Done reading because of idle timeout", "");
-            mh.Unlock();
+            // mh.Unlock();
             (*i)->DoneReading(false);
-            mh.Lock();
+            // mh.Lock();
         }
     }
     RemoveFinishedConnections();
