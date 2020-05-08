@@ -296,7 +296,7 @@ EHSConnection::AddBuffer(char *ipsData, ///< new data to be added
 /// call when no more reads will be performed on this object.  inDisconnected is true when client has disconnected
 void EHSConnection::DoneReading(bool ibDisconnected)
 {
-    MutexHelper mh(&m_oMutex);
+    // MutexHelper mh(&m_oMutex);
     m_bDoneReading = true;
     m_bDisconnected = ibDisconnected;
 }
